@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { Button } from '@mui/material';
+
 export default function SignUp() {
 
   // States for registration
@@ -81,19 +83,27 @@ export default function SignUp() {
       <form>
 
         {/* Labels and inputs for form data */}
-        <label className="label">Name</label>
-
+        <label className="label">Name: &nbsp;</label>
         <input onChange={handleName} value={name} type="text" />
 
-        <label className="label">Email</label>
+        <br />
+        <br />
+
+        <label className="label">Email: &nbsp;</label>
         <input onChange={handleEmail} value={email} type="email" />
 
-        <label className="label">Password</label>
+        <br />
+        <br />
+
+        <label className="label">Password: &nbsp;</label>
         <input onChange={handlePassword} value={password} type="password" />
 
-        <button onClick={handleSubmit} type="submit">
+        <br />
+        <br />
+
+        <Button variant="contained" onClick={handleSubmit} type="submit">
           Submit
-        </button>
+        </Button>
 
       </form>
     </div>
