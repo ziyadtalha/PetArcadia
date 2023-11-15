@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +10,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 
 import { Link } from "react-router-dom";
 
-export default function ButtonAppBar() {
+export default function ResponsiveAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -22,7 +21,7 @@ export default function ButtonAppBar() {
 
           </IconButton>
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} to="/">
 
             <PetsIcon />
 
@@ -37,6 +36,10 @@ export default function ButtonAppBar() {
 
           <Button color="inherit" as={Link} to="/signup">
             Sign Up
+          </Button>
+
+          <Button color="inherit" as={Link} to="/signin">
+            Sign In
           </Button>
 
         </Toolbar>

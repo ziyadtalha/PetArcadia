@@ -101,7 +101,12 @@ export default function SignUp() {
         <br />
         <br />
 
-        <Button variant="contained" onClick={handleSubmit} type="submit">
+        <Button
+          onClick={handleSubmit}
+          type="submit"
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
           Submit
         </Button>
 
