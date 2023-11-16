@@ -13,7 +13,9 @@ import { Link } from "react-router-dom";
 export default function ResponsiveAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
+
       <AppBar position="static">
+
         <Toolbar>
 
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
@@ -29,6 +31,10 @@ export default function ResponsiveAppBar() {
 
             Pet Arcadia
           </Typography>
+
+          <Button color="inherit" as={Link} to="/viewpets">
+            View Pets
+          </Button>
 
           <Button color="inherit" as={Link} to="/">
             Home
