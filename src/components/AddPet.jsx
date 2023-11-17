@@ -5,12 +5,31 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-export default function AddPet({onAddPet})
+//import FormLabel from '@mui/material/FormLabel';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
+
+export default function AddPet({onAddPet, toggleModal})
 {
 
   const initialisePetDetails = () => {
-    return( { name: "", species: ""});
+    return( { name: "", species: "", gender: ""});
   }
 
   const [petDetails, setPetDetails] = useState(initialisePetDetails);
@@ -30,7 +49,7 @@ export default function AddPet({onAddPet})
   }
 
   const validatePetDetails = () => {
-    if((petDetails.name !== "") && (petDetails.species !== ""))
+    if((petDetails.name !== "") && (petDetails.species !== "") && ((petDetails.gender === "Male") || (petDetails.gender === "Female")))
     {
       return true;
     }
@@ -46,36 +65,50 @@ export default function AddPet({onAddPet})
 
       //reset pet details
       setPetDetails(initialisePetDetails);
+
+      //closing modal
+      toggleModal();
     }
   }
 
   return (
     <>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-          border: 1,
-          mt: 5,
-          p: 3
-        }}
-        noValidate
-        autoComplete="off"
-      >
+      <Box sx={style}>
 
-        <TextField id="outlined-basic" label="Pet Name" variant="outlined"
-          name="name" value={petDetails.name} onChange={updateDetails}/>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+            border: 1,
+            p: 3
+          }}
+          noValidate
+          autoComplete="off"
+        >
 
-        <br />
+          <TextField id="outlined-basic" label="Pet Name" variant="outlined"
+            name="name" value={petDetails.name} onChange={updateDetails}/>
 
-        <TextField id="outlined-basic" label="Pet Type" variant="outlined"
-          name="species" value={petDetails.species} onChange={updateDetails}
-        />
-        <br />
+          <br />
 
-        <Button type="submit" variant="outlined">Add</Button>
+          <TextField id="outlined-basic" label="Pet Type" variant="outlined"
+            name="species" value={petDetails.species} onChange={updateDetails}
+          />
+          <br />
 
+          <RadioGroup
+            row
+            name="gender"
+            value={petDetails.gender}
+            onChange={updateDetails}
+          >
+            <FormControlLabel value="Female" control={<Radio />} label="Female" />
+            <FormControlLabel value="Male" control={<Radio />} label="Male" />
+          </RadioGroup>
+
+          <Button type="submit" variant="contained">Add</Button>
+        </Box>
       </Box>
     </>
   )

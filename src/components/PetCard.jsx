@@ -30,6 +30,10 @@ export default function PetCard({pet})
           Type: {pet.species}
         </Typography>
 
+        <Typography variant="body2" color="text.primary">
+          Gender: {pet.gender}
+        </Typography>
+
       </CardContent>
 
     </Card>
