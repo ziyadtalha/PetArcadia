@@ -3,6 +3,8 @@
 
 import PetCard from "./PetCard";
 
+import "./PetList.css"
+
 export default function PetList({pets}) {
   return (
     <div className="PetsList">
