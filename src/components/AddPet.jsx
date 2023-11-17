@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
+
+import { useState } from "react";
+
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
-
-import { useState } from "react";
 
 export default function AddPet({onAddPet})
 {
@@ -15,8 +17,6 @@ export default function AddPet({onAddPet})
 
   const updateDetails = (eventObject) =>
   {
-    console.log("called");
-
     const field = eventObject.target.name;
     const value = eventObject.target.value;
 
@@ -29,8 +29,7 @@ export default function AddPet({onAddPet})
     });
   }
 
-  function validatePetDetails()
-  {
+  const validatePetDetails = () => {
     if((petDetails.name !== "") && (petDetails.species !== ""))
     {
       return true;
@@ -38,13 +37,15 @@ export default function AddPet({onAddPet})
     return false;
   }
 
-  function handleSubmit(evt)
-  {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
 
     if(validatePetDetails())
     {
       onAddPet(petDetails);
+
+      //reset pet details
+      setPetDetails(initialisePetDetails);
     }
   }
 
@@ -56,7 +57,7 @@ export default function AddPet({onAddPet})
         sx={{
           '& > :not(style)': { m: 1, width: '25ch' },
           border: 1,
-          m: 5,
+          mt: 5,
           p: 3
         }}
         noValidate
